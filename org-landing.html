@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  porchstroll.org — institutional landing page
+  Matches the house style established in porch-etiquette.html.
+
+  FONTS: Uses Georgia (web-safe serif) + system sans, exactly like the existing
+  pages, so there are NO external font/CDN calls. For production you can swap in
+  the brand stack (Lora + DM Sans) but SELF-HOST the files — do not link Google
+  Fonts, which would phone home to a third party and undercut the whole point of
+  this page. Self-hosting keeps the privacy promise intact.
+
+  STATUS TAGS: "Decided" / "Committed" / "Still deciding" distinguish settled
+  facts from open questions and forward commitments. This is deliberate — it lets
+  the page surface in-progress thinking honestly without claiming anything is
+  finished that isn't.
+-->
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>porchstroll.org — in the open</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    .ps-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px; border-bottom: 1px solid #e8e8e8;
+    }
+    .ps-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .ps-logo-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 500; color: #111; }
+    .ps-nav-links { display: flex; gap: 24px; align-items: center; }
+    .ps-nav-links a { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #666; text-decoration: none; }
+    .ps-nav-links a:hover { color: #111; }
+    .ps-nav-product { color: #2a7db5 !important; font-weight: 500; }
+
+    /* HERO BAND */
+    .pe-hero { background: #5BADE0; padding: 64px 32px 58px; text-align: center; }
+    .pe-hero h1 {
+      font-family: Georgia, serif; font-size: 42px; font-weight: normal;
+      color: #fff; margin-bottom: 14px; letter-spacing: -0.5px;
+    }
+    .pe-hero p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px; color: rgba(255,255,255,0.9); max-width: 540px;
+      margin: 0 auto; line-height: 1.6;
+    }
+
+    /* BODY */
+    .pe-body { max-width: 680px; margin: 0 auto; padding: 64px 32px 80px; }
+
+    .pe-intro {
+      font-size: 19px; color: #333; line-height: 1.75; margin-bottom: 56px;
+      border-left: 3px solid #5BADE0; padding-left: 20px;
+    }
+
+    .pe-section { margin-bottom: 52px; }
+    .pe-section-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #5BADE0; margin-bottom: 10px;
+    }
+    .pe-section h2 {
+      font-family: Georgia, serif; font-size: 26px; font-weight: normal;
+      color: #111; margin-bottom: 16px; line-height: 1.3;
+    }
+    .pe-section p { font-size: 16px; color: #444; line-height: 1.75; margin-bottom: 14px; }
+    .pe-section p:last-child { margin-bottom: 0; }
+
+    /* DECISION BLOCKS */
+    .pe-decisions { margin: 0 0 52px; }
+    .pe-decisions-intro {
+      font-size: 16px; color: #444; line-height: 1.75; margin-bottom: 28px;
+    }
+    .pe-decision {
+      padding: 24px 0; border-top: 1px solid #ebebeb;
+    }
+    .pe-decision:last-child { border-bottom: 1px solid #ebebeb; }
+
+    .pe-decision-head {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px;
+    }
+    .pe-decision-head h3 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px; font-weight: 600; color: #111;
+    }
+    .pe-tag {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+    }
+    .tag-decided { background: #5BADE0; color: #fff; }
+    .tag-committed { background: #fff; color: #2a7db5; border: 1.5px solid #5BADE0; }
+    .tag-deciding { background: #f0f0f0; color: #777; }
+
+    .pe-decision p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 10px;
+    }
+    .pe-decision p:last-child { margin-bottom: 0; }
+    .pe-decision .pe-revisit {
+      font-size: 14px; color: #777; border-left: 2px solid #e0e0e0; padding-left: 14px;
+    }
+
+    /* PRINCIPLE BLOCK */
+    .pe-principle {
+      background: #f7f7f7; border-radius: 14px; padding: 32px 36px; margin: 0 0 52px;
+    }
+    .pe-principle-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #5BADE0; margin-bottom: 14px;
+    }
+    .pe-principle p {
+      font-family: Georgia, serif; font-size: 18px; color: #333; line-height: 1.75; margin-bottom: 14px;
+    }
+    .pe-principle p:last-child { margin-bottom: 0; }
+    .pe-principle .pe-reach {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px; color: #555; margin-bottom: 8px; line-height: 1.7;
+    }
+    .pe-principle .pe-reach:last-child { margin-bottom: 0; }
+    .pe-principle .pe-reach strong { color: #111; }
+
+    /* CLOSER */
+    .pe-closer { text-align: center; padding: 48px 0 0; border-top: 1px solid #ebebeb; }
+    .pe-closer p {
+      font-family: Georgia, serif; font-size: 20px; color: #333; line-height: 1.7;
+      max-width: 500px; margin: 0 auto 24px;
+    }
+    .pe-closer a { color: #2a7db5; text-decoration: none; }
+    .pe-closer a:hover { text-decoration: underline; }
+    .pe-closer-sub {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+      font-size: 14px !important; color: #999 !important;
+    }
+
+    /* FOOTER */
+    .ps-footer {
+      padding: 24px 32px; border-top: 1px solid #e8e8e8;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .ps-footer p, .ps-nonprofit {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #999;
+    }
+
+    @media (max-width: 560px) {
+      .pe-hero h1 { font-size: 32px; }
+      .ps-nav { padding: 14px 20px; }
+      .ps-nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="ps-nav">
+  <a class="ps-logo" href="/">
+    <svg width="36" height="36" viewBox="0 0 64 64" aria-label="porchstroll logo">
+      <rect width="64" height="64" rx="13" fill="#5BADE0"/>
+      <rect x="8" y="6" width="48" height="5" rx="1.5" fill="#fff"/>
+      <polygon points="4,11 60,11 50,22 14,22" fill="#fff"/>
+      <rect x="12" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <rect x="47" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <circle cx="32" cy="30" r="4" fill="#fff"/>
+      <rect x="30" y="34" width="4" height="8" rx="2" fill="#fff"/>
+      <line x1="30" y1="36" x2="25" y2="32" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="25" y1="32" x2="23" y2="28" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="34" y1="36" x2="38" y2="39" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <rect x="12" y="40" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="16" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="21" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="26" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="31" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="36" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="41" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="12" y="49" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="10" y="52" width="44" height="4" rx="1" fill="#fff"/>
+      <rect x="18" y="55" width="28" height="3" rx="1" fill="#fff"/>
+      <rect x="22" y="57" width="20" height="3" rx="1" fill="#fff"/>
+    </svg>
+    <span class="ps-logo-text">porchstroll</span>
+  </a>
+  <div class="ps-nav-links">
+    <a href="governance.html">governance</a>
+    <a href="transparency.html">transparency</a>
+    <a href="faq.html">faq</a>
+    <a href="https://porchstroll.com" class="ps-nav-product">the product&nbsp;&rarr;</a>
+  </div>
+</nav>
+
+<div class="pe-hero">
+  <h1>porchstroll, in the open</h1>
+  <p>The institutional side of porchstroll — how we're being built, how we'll be governed, and the one promise behind all of it: we don't use you.</p>
+</div>
+
+<div class="pe-body">
+
+  <p class="pe-intro">
+    Most platforms ask you to trust a privacy policy they can rewrite whenever it suits them. porchstroll is being built differently — as a nonprofit, structured so the promise not to exploit you is part of what the organization legally <em>is</em>, not just what it says. We're not incorporated yet — this page is where we'll show our work as we get there.
+  </p>
+
+  <div class="pe-section">
+    <div class="pe-section-label">How we're being built</div>
+    <h2>A Maryland nonstock nonprofit.</h2>
+    <p>We're incorporating porchstroll as a nonstock nonprofit corporation in Maryland — the filing is underway, with a nonprofit attorney's help. Two features of that form matter more than the label. There will be no investors and no shareholders, so no one is owed a return that could only be paid for by extracting value from the people who use the platform. And a non-distribution constraint means the organization cannot pay out profits to owners — there are none to pay. Money that comes in goes back into running porchstroll and paying the people who build it.</p>
+    <p>We don't claim a charitable tax exemption, and that's deliberate. <em>We don't extract</em> applies to the commons too: paying our share of taxes is part of how we participate, not a cost to engineer around.</p>
+  </div>
+
+  <div class="pe-decisions" id="governance">
+    <div class="pe-section-label">What we're working through, in the open</div>
+    <p class="pe-decisions-intro">
+      Some of this is settled. Some of it we're still deciding — and we'd rather show you the reasoning than pretend every question is closed. Here's where our thinking stands today.
+    </p>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>Nonprofit form vs. 501(c)(3) status</h3>
+        <span class="pe-tag tag-deciding">Still deciding</span>
+      </div>
+      <p>We've incorporated as a nonstock nonprofit, but we are not currently pursuing 501(c)(3) tax-exempt status. The mission lock we care about comes from the corporate form itself, not from a tax classification — and a general-purpose social network is a genuinely hard case to argue as a tax-exempt charity. We'd rather make a claim we can stand behind than reach for a status we'd have to stretch to justify.</p>
+      <p class="pe-revisit">We'd revisit this if donations became a meaningful source of funding, if a major funder required it, or if this kind of voluntary transparency turned out not to be enough on its own.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>How we pay people</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>We will publish a pay-ratio cap — a fixed limit on how much more the highest-paid person can earn than the lowest-paid — along with our salary bands and the founder's named salary. The exact numbers are still being finalized. The commitment to publish them, in full, is not.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>What we'll publish every year</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>Each year we will post a financial summary and an independent CPA audit, here, voluntarily. A 501(c)(3) would be required to make certain disclosures; we're choosing to show more than that, by choice rather than obligation — which we think says something a required filing can't.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>Who governs us</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>porchstroll will be governed by a majority-independent board — most seats held by people who are neither staff nor the founder — and we will publish the Articles of Incorporation in full. A founder should not be able to quietly change what the organization is. The board is how we make that true.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>The legal form: a Maryland nonstock nonprofit</h3>
+        <span class="pe-tag tag-decided">Decided</span>
+      </div>
+      <p>The form is chosen, and the incorporation filing is underway with legal help — a Maryland nonstock nonprofit, with the no-investor and non-distribution constraints described above intrinsic to it. This is the foundation everything else is built on.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>How we're funding the start</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>Getting incorporated and paying for real legal advice costs money, and we're earning it ourselves rather than taking it from you. We've built a paid email app — a private, no-tracking mail client that works with the accounts you already have, costs a small one-time price, and is yours to keep once you buy it. No data collection, no ads, no AI reading your mail. It's the porchstroll philosophy in miniature, and what it earns goes toward getting the nonprofit off the ground. To be clear: we are not selling anyone's data — we're selling a good, honest piece of software.</p>
+    </div>
+  </div>
+
+  <div class="pe-principle" id="transparency">
+    <div class="pe-principle-label">The principle underneath all of it</div>
+    <p>Internally we have one rule that the rest of this follows from: <em>we don't extract.</em> It isn't only about your data. It's about everyone in porchstroll's orbit.</p>
+    <p class="pe-reach"><strong>From members:</strong> no surveillance, no behavioral profiling, no selling you to anyone.</p>
+    <p class="pe-reach"><strong>From employees:</strong> living wages and real benefits, not the least we can get away with.</p>
+    <p class="pe-reach"><strong>From vendors and the projects we depend on:</strong> partners to support, not cost centers to squeeze.</p>
+    <p class="pe-reach"><strong>From the commons:</strong> taxes paid as a civic obligation, because we use the same roads and rules as everyone else.</p>
+  </div>
+
+  <div class="pe-closer">
+    <p>porchstroll the product lives at <a href="https://porchstroll.com">porchstroll.com</a>. This is where the institutional record will live — open, and kept current as we build it.</p>
+    <p>Want the human version, not the legal one? Read the <a href="letter.html">founder's letter</a>.</p>
+    <p class="pe-closer-sub">Funder, journalist, or just someone checking whether the structure backs the promise? <a href="mailto:hello@porchstroll.org">Get in touch.</a></p>
+  </div>
+
+</div>
+
+<footer class="ps-footer">
+  <p>&copy; 2026 porchstroll &mdash; a nonprofit community</p>
+  <span class="ps-nonprofit">no tracking &middot; no profiling &middot; no selling you</span>
+</footer>
+
+</body>
+</html>

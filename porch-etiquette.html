@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>porch etiquette — porchstroll</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    .ps-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px; border-bottom: 1px solid #e8e8e8;
+    }
+    .ps-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .ps-logo-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 500; color: #111; }
+    .ps-nav-links { display: flex; gap: 24px; align-items: center; }
+    .ps-nav-links a { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #666; text-decoration: none; }
+    .ps-nav-links a:hover { color: #111; }
+
+    /* HERO BAND */
+    .pe-hero {
+      background: #5BADE0;
+      padding: 56px 32px 52px;
+      text-align: center;
+    }
+    .pe-hero h1 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .pe-hero p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* MAIN CONTENT */
+    .pe-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 32px 80px;
+    }
+
+    .pe-intro {
+      font-size: 19px;
+      color: #333;
+      line-height: 1.75;
+      margin-bottom: 52px;
+      border-left: 3px solid #5BADE0;
+      padding-left: 20px;
+    }
+
+    .pe-section {
+      margin-bottom: 48px;
+    }
+
+    .pe-section-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5BADE0;
+      margin-bottom: 10px;
+    }
+
+    .pe-section h2 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: normal;
+      color: #111;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .pe-section p {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .pe-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* RULE CARDS */
+    .pe-rules {
+      margin: 52px 0;
+    }
+
+    .pe-rules-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5BADE0;
+      margin-bottom: 20px;
+    }
+
+    .pe-rule {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 22px 0;
+      border-top: 1px solid #ebebeb;
+    }
+
+    .pe-rule:last-child {
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .pe-rule-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #f0f8ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .pe-rule-text h3 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 5px;
+    }
+
+    .pe-rule-text p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ANALOGY BLOCK */
+    .pe-analogy {
+      background: #f7f7f7;
+      border-radius: 14px;
+      padding: 32px 36px;
+      margin: 52px 0;
+    }
+
+    .pe-analogy-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5BADE0;
+      margin-bottom: 14px;
+    }
+
+    .pe-analogy p {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #333;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .pe-analogy p:last-child { margin-bottom: 0; }
+
+    /* ENFORCEMENT */
+    .pe-enforcement {
+      margin-bottom: 52px;
+    }
+
+    /* CLOSER */
+    .pe-closer {
+      text-align: center;
+      padding: 48px 0 0;
+      border-top: 1px solid #ebebeb;
+    }
+
+    .pe-closer p {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #333;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+
+    .pe-closer-sub {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+      font-size: 14px !important;
+      color: #999 !important;
+    }
+
+    /* FOOTER */
+    .ps-footer {
+      padding: 24px 32px;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ps-footer p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #999; }
+    .ps-nonprofit { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #999; }
+  </style>
+</head>
+<body>
+
+<nav class="ps-nav">
+  <a class="ps-logo" href="/">
+    <svg width="36" height="36" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="13" fill="#5BADE0"/>
+      <rect x="8" y="6" width="48" height="5" rx="1.5" fill="#fff"/>
+      <polygon points="4,11 60,11 50,22 14,22" fill="#fff"/>
+      <rect x="12" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <rect x="47" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <circle cx="32" cy="30" r="4" fill="#fff"/>
+      <rect x="30" y="34" width="4" height="8" rx="2" fill="#fff"/>
+      <line x1="30" y1="36" x2="25" y2="32" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="25" y1="32" x2="23" y2="28" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="34" y1="36" x2="38" y2="39" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <rect x="12" y="40" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="16" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="21" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="26" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="31" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="36" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="41" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="12" y="49" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="10" y="52" width="44" height="4" rx="1" fill="#fff"/>
+      <rect x="18" y="55" width="28" height="3" rx="1" fill="#fff"/>
+      <rect x="22" y="57" width="20" height="3" rx="1" fill="#fff"/>
+    </svg>
+    <span class="ps-logo-text">porchstroll</span>
+  </a>
+  <div class="ps-nav-links">
+    <a href="#">about us</a>
+    <a href="#">our mission</a>
+  </div>
+</nav>
+
+<div class="pe-hero">
+  <h1>porch etiquette</h1>
+  <p>A short guide to how we treat each other here — written the way a neighbor would explain it, not a lawyer.</p>
+</div>
+
+<div class="pe-body">
+
+  <p class="pe-intro">
+    porchstroll is built around a simple idea: this is a neighborhood, and neighborhoods work because people treat each other with a basic level of decency. Porch Etiquette is how we put that into words.
+  </p>
+
+  <div class="pe-section">
+    <div class="pe-section-label">The idea</div>
+    <h2>Your porch is your space. Treat everyone else's the same way.</h2>
+    <p>On a real street, you wouldn't stand on your porch and shout that your neighbor looks terrible, or that the business down the block is a rip-off. You wouldn't walk up to someone's porch and throw tomatoes at it just because you disagree with them.</p>
+    <p>The same principle applies here. Your Porch is yours — share what you care about, what you're working on, what you believe in. But how you show up on everyone else's matters just as much.</p>
+  </div>
+
+  <div class="pe-rules">
+    <div class="pe-rules-title">What this looks like in practice</div>
+
+    <div class="pe-rule">
+      <div class="pe-rule-icon">🌱</div>
+      <div class="pe-rule-text">
+        <h3>Talk about yourself, not against others</h3>
+        <p>Share your story, your cause, your work, your ideas. Politicians: tell us why you're running, not why your opponent is terrible. Businesses: tell us what you make and why you care. The porch is for showing up, not tearing down.</p>
+      </div>
+    </div>
+
+    <div class="pe-rule">
+      <div class="pe-rule-icon">💬</div>
+      <div class="pe-rule-text">
+        <h3>Disagree with ideas, not with people</h3>
+        <p>Debate is welcome. Honest disagreement is healthy. But there's a difference between "I see it differently, and here's why" and showing up on someone's Porch just to make them feel bad. One is a conversation. The other is just noise.</p>
+      </div>
+    </div>
+
+    <div class="pe-rule">
+      <div class="pe-rule-icon">🚫</div>
+      <div class="pe-rule-text">
+        <h3>No attacks on how people look, who they are, or where they come from</h3>
+        <p>Comments about someone's appearance, identity, background, or anything they didn't choose have no place here. Full stop. This isn't a close call.</p>
+      </div>
+    </div>
+
+    <div class="pe-rule">
+      <div class="pe-rule-icon">🏪</div>
+      <div class="pe-rule-text">
+        <h3>Compete fairly, or don't compete here</h3>
+        <p>If you're a business or organization on porchstroll, you're welcome to tell your story and make your case. You're not welcome to use this platform to run down competitors, spread rumors, or manufacture outrage about someone else. If your pitch requires tearing someone else apart, it's not a pitch — it's an attack.</p>
+      </div>
+    </div>
+
+    <div class="pe-rule">
+      <div class="pe-rule-icon">🤝</div>
+      <div class="pe-rule-text">
+        <h3>Be a good guest on other people's porches</h3>
+        <p>When you comment on someone else's post, you're visiting their space. Engage with what they said. Ask questions. Add something. Don't show up just to be unkind — that's not a visit, that's a disruption.</p>
+      </div>
+    </div>
+
+    <div class="pe-rule">
+      <div class="pe-rule-icon">🔇</div>
+      <div class="pe-rule-text">
+        <h3>If you have nothing good to say, keep strolling</h3>
+        <p>You don't have to comment on everything. If someone's post isn't for you, that's fine — keep strolling. The report button exists for things that genuinely cross a line, not for things you simply disagree with.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pe-analogy">
+    <div class="pe-analogy-label">The spirit behind it</div>
+    <p>Think about an actual neighborhood street on a warm evening. People are on their porches. Some are chatting across the fence. A candidate is walking the block introducing themselves. A local shop owner is waving from their stoop.</p>
+    <p>Nobody is screaming insults. Nobody is following someone home just to argue. Nobody is throwing tomatoes at a neighbor's front door because they put up a yard sign they disagree with.</p>
+    <p>That's the neighborhood we're trying to build here. It doesn't mean everyone agrees — it means everyone shows up like a decent neighbor.</p>
+  </div>
+
+  <div class="pe-enforcement pe-section">
+    <div class="pe-section-label">How this works</div>
+    <h2>Community-first, human-reviewed</h2>
+    <p>We don't have an algorithm scanning for rule-breakers. If something crosses a line, members can report it — and a real person will review it. We believe in human judgment, not automated enforcement.</p>
+    <p>For private Chat conversations, only someone in the conversation can report it. We don't surveil private messages. Privacy means privacy.</p>
+    <p>Repeated or serious violations will result in removal. But we're not looking to catch anyone out — we're looking to protect the neighborhood for everyone who's here in good faith.</p>
+  </div>
+
+  <div class="pe-closer">
+    <p>porchstroll is a place to connect, not to be sold to — and not to be shouted at. We think most people already know how to be a good neighbor. This is just a reminder that the same rules apply here.</p>
+    <p class="pe-closer-sub">Welcome to the porch. We're glad you're here.</p>
+  </div>
+
+</div>
+
+<footer class="ps-footer">
+  <p>© 2026 porchstroll — a non-profit community</p>
+  <span class="ps-nonprofit">no tracking · no profiling · no selling you</span>
+</footer>
+
+</body>
+</html>

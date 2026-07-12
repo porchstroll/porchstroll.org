@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- porchstroll.org — FAQ. Native <details> accordion, no JS, no external calls. -->
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>faq — porchstroll.org</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #fff; color: #111; line-height: 1.7; }
+
+    .ps-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e8e8e8; }
+    .ps-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .ps-logo-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 500; color: #111; }
+    .ps-nav-links { display: flex; gap: 22px; align-items: center; }
+    .ps-nav-links a { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #666; text-decoration: none; }
+    .ps-nav-links a:hover { color: #111; }
+    .ps-nav-links a.active { color: #111; font-weight: 500; }
+    .ps-nav-product { color: #2a7db5 !important; font-weight: 500; }
+
+    .pe-hero { background: #5BADE0; padding: 64px 32px 58px; text-align: center; }
+    .pe-hero h1 { font-family: Georgia, serif; font-size: 42px; font-weight: normal; color: #fff; margin-bottom: 14px; letter-spacing: -0.5px; }
+    .pe-hero p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; color: rgba(255,255,255,0.9); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+
+    .pe-body { max-width: 680px; margin: 0 auto; padding: 56px 32px 80px; }
+    .pe-intro { font-size: 18px; color: #333; line-height: 1.75; margin-bottom: 44px; border-left: 3px solid #5BADE0; padding-left: 20px; }
+
+    .faq-group { margin-bottom: 40px; }
+    .faq-group-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #5BADE0; margin-bottom: 6px; }
+
+    details.faq { border-top: 1px solid #ebebeb; }
+    .faq-group details.faq:last-of-type { border-bottom: 1px solid #ebebeb; }
+    details.faq summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px; font-weight: 500; color: #111; cursor: pointer;
+      padding: 18px 36px 18px 0; position: relative; list-style: none; line-height: 1.5;
+    }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq summary::after {
+      content: "+"; position: absolute; right: 4px; top: 16px;
+      font-size: 22px; font-weight: 400; color: #5BADE0; transition: transform 0.2s ease;
+    }
+    details.faq[open] summary::after { content: "\2013"; }
+    details.faq summary:hover { color: #2a7db5; }
+    details.faq .faq-a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px; color: #555; line-height: 1.75; padding: 0 36px 22px 0;
+    }
+    details.faq .faq-a p { margin-bottom: 12px; }
+    details.faq .faq-a p:last-child { margin-bottom: 0; }
+    details.faq .faq-a a { color: #2a7db5; text-decoration: none; }
+    details.faq .faq-a a:hover { text-decoration: underline; }
+    details.faq .faq-a strong { color: #111; }
+
+    .pe-closer { text-align: center; padding: 44px 0 0; border-top: 1px solid #ebebeb; margin-top: 8px; }
+    .pe-closer p { font-family: Georgia, serif; font-size: 20px; color: #333; line-height: 1.7; max-width: 500px; margin: 0 auto 24px; }
+    .pe-closer a { color: #2a7db5; text-decoration: none; }
+    .pe-closer a:hover { text-decoration: underline; }
+
+    .ps-footer { padding: 24px 32px; border-top: 1px solid #e8e8e8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .ps-footer p, .ps-nonprofit { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #999; }
+    .ps-footer a { color: #999; text-decoration: none; }
+    .ps-footer a:hover { color: #666; }
+
+    @media (max-width: 560px) { .pe-hero h1 { font-size: 32px; } .ps-nav { padding: 14px 20px; } .ps-nav-links { gap: 14px; } }
+  </style>
+</head>
+<body>
+
+<nav class="ps-nav">
+  <a class="ps-logo" href="/">
+    <svg width="36" height="36" viewBox="0 0 64 64" aria-label="porchstroll logo">
+      <rect width="64" height="64" rx="13" fill="#5BADE0"/>
+      <rect x="8" y="6" width="48" height="5" rx="1.5" fill="#fff"/>
+      <polygon points="4,11 60,11 50,22 14,22" fill="#fff"/>
+      <rect x="12" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <rect x="47" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <circle cx="32" cy="30" r="4" fill="#fff"/>
+      <rect x="30" y="34" width="4" height="8" rx="2" fill="#fff"/>
+      <line x1="30" y1="36" x2="25" y2="32" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="25" y1="32" x2="23" y2="28" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="34" y1="36" x2="38" y2="39" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <rect x="12" y="40" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="16" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="21" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="26" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="31" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="36" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="41" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="12" y="49" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="10" y="52" width="44" height="4" rx="1" fill="#fff"/>
+      <rect x="18" y="55" width="28" height="3" rx="1" fill="#fff"/>
+      <rect x="22" y="57" width="20" height="3" rx="1" fill="#fff"/>
+    </svg>
+    <span class="ps-logo-text">porchstroll</span>
+  </a>
+  <div class="ps-nav-links">
+    <a href="governance.html">governance</a>
+    <a href="transparency.html">transparency</a>
+    <a href="faq.html" class="active">faq</a>
+    <a href="https://porchstroll.com" class="ps-nav-product">the product&nbsp;&rarr;</a>
+  </div>
+</nav>
+
+<div class="pe-hero">
+  <h1>Questions, answered plainly</h1>
+  <p>The things people actually ask — including the skeptical ones. If a question isn't here, ask us.</p>
+</div>
+
+<div class="pe-body">
+
+  <p class="pe-intro">
+    We'd rather answer the hard questions ourselves than let them go unanswered. Where something isn't settled yet, we say so.
+  </p>
+
+  <div class="faq-group">
+    <div class="faq-group-label">The structure</div>
+
+    <details class="faq" open>
+      <summary>Are you really a nonprofit? Are you a 501(c)(3)?</summary>
+      <div class="faq-a">
+        <p>porchstroll is being incorporated as a Maryland nonstock nonprofit corporation. We are <strong>not</strong> currently a 501(c)(3) — that's a tax-exemption status, and we've chosen not to pursue it for now. The mission protection we care about comes from the nonprofit corporate form itself: no shareholders, and a legal rule against distributing surplus to insiders.</p>
+        <p>More on the reasoning is on the <a href="index.html">main page</a> and the <a href="governance.html">governance page</a>.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>If you're a nonprofit, how do you make money?</summary>
+      <div class="faq-a">
+        <p>Nonprofit means no owners profit — not that no money changes hands. For-profit businesses pay a subscription to be here, extra storage costs money because it costs us money, and there's a small, limited amount of non-targeted advertising. Today, a paid email app we built funds the start. The full picture is on the <a href="transparency.html">transparency page</a>.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Won't a future owner just sell out or change the rules?</summary>
+      <div class="faq-a">
+        <p>There's no owner to sell, and no shares to buy. Surplus can't be paid out to insiders, the purpose is written into the founding documents, and a majority-independent board guards against quiet reversals. That's the whole reason for the nonprofit structure — a promise you can change on a whim isn't worth much.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-label">Money &amp; ads</div>
+
+    <details class="faq">
+      <summary>Do you show ads?</summary>
+      <div class="faq-a">
+        <p>Yes — a limited number, and not the kind you're used to. Sponsored posts are clearly labeled, capped at no more than one in every eight posts, and the same size as a normal post. There's no comment section on them, and the links go to clean destinations with no tracking attached.</p>
+        <p>The crucial part: <strong>we don't build a profile on you to target them.</strong> An advertiser can choose to appear alongside a topic — say, a gardening Circle — but they never see who you are, and we never follow you around to measure it. We only report aggregate, anonymous click totals. That's why we say "no tracking, no profiling, no selling you" rather than "no ads."</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Do you sell or share my data?</summary>
+      <div class="faq-a">
+        <p>No. We don't sell it, rent it, or share it with advertisers or data brokers. We collect as little as we can to run the service, and what we hold stays here. This isn't a policy we can quietly change — not selling you is the entire point of the organization.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-label">Your data &amp; the experience</div>
+
+    <details class="faq">
+      <summary>Is there an algorithm deciding what I see?</summary>
+      <div class="faq-a">
+        <p>No engagement-maximizing algorithm. Your feed shows posts from the people and groups you follow — not whatever an AI predicts will keep you scrolling or wind you up. The goal is a calm neighborhood, not a slot machine.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Do you use my content to train AI?</summary>
+      <div class="faq-a">
+        <p>No. We don't harvest your posts or messages to train AI models. Any automated tools we use are narrow — for example, helping human moderators triage reports — and never a substitute for people making the real decisions.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What happens to my data if porchstroll shuts down?</summary>
+      <div class="faq-a">
+        <p>It gets deleted — not sold. If porchstroll ever winds down, we'll give you clear notice and a window to export everything you've put here. After that, your data is deleted. It is not treated as an asset, it is not handed to creditors, and it is not passed to whoever might buy what's left.</p>
+        <p>On the money side: whatever funds remain after obligations are settled go to a mission-aligned nonprofit — privacy, digital rights, or community infrastructure. The non-distribution rule holds all the way to the end. Neither the founder nor anyone else here walks away with it. The full detail is on the <a href="governance.html">governance page</a>.</p>
+      </div>
+    </details>
+
+
+      <div class="faq-a">
+        <p>Private conversations are private — we don't proactively scan them. A conversation is only ever reviewed if someone inside it reports it, and then a real person looks, not an algorithm. We've also kept messaging text-only by design, which removes an entire category of abuse rather than trying to police it after the fact.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How is this different from Mastodon, MeWe, or the others?</summary>
+      <div class="faq-a">
+        <p>The privacy-respecting options today tend to be either nonprofit-but-technical (hard for most people to use) or easy-but-for-profit (still answerable to owners or investors). porchstroll aims for the gap: a nonprofit, general-purpose, genuinely easy-to-use network. The structure and the simplicity together are the point.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-label">Getting in &amp; helping out</div>
+
+    <details class="faq">
+      <summary>Can I join yet?</summary>
+      <div class="faq-a">
+        <p>Not quite. We're pre-launch and opening the porch slowly. You can join the waitlist on the <a href="https://porchstroll.com">main site</a> and we'll invite you in when there's room.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How can I support porchstroll?</summary>
+      <div class="faq-a">
+        <p>Right now, the most direct way is to buy the email app once it's out — it funds the incorporation and legal groundwork. Joining the waitlist and telling a friend helps too. If formal donations open up later, we'll say so here.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Who's behind this?</summary>
+      <div class="faq-a">
+        <p>porchstroll is founder-led for now, with an independent board forming. The clearest answer to "who" and "why" is in the <a href="letter.html">founder's letter</a>.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="pe-closer">
+    <p>Still wondering about something? <a href="mailto:hello@porchstroll.org">Ask us directly.</a></p>
+  </div>
+
+</div>
+
+<footer class="ps-footer">
+  <p>&copy; 2026 porchstroll &mdash; a nonprofit community</p>
+  <span class="ps-nonprofit"><a href="letter.html">the founder's letter</a> &middot; no tracking &middot; no profiling &middot; no selling you</span>
+</footer>
+
+</body>
+</html>

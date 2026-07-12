@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- porchstroll.org — Governance. Matches house style. No external font/CDN calls. -->
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>governance — porchstroll.org</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #fff; color: #111; line-height: 1.7; }
+
+    .ps-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e8e8e8; }
+    .ps-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .ps-logo-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 500; color: #111; }
+    .ps-nav-links { display: flex; gap: 22px; align-items: center; }
+    .ps-nav-links a { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #666; text-decoration: none; }
+    .ps-nav-links a:hover { color: #111; }
+    .ps-nav-links a.active { color: #111; font-weight: 500; }
+    .ps-nav-product { color: #2a7db5 !important; font-weight: 500; }
+
+    .pe-hero { background: #5BADE0; padding: 64px 32px 58px; text-align: center; }
+    .pe-hero h1 { font-family: Georgia, serif; font-size: 42px; font-weight: normal; color: #fff; margin-bottom: 14px; letter-spacing: -0.5px; }
+    .pe-hero p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; color: rgba(255,255,255,0.9); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+
+    .pe-body { max-width: 680px; margin: 0 auto; padding: 64px 32px 80px; }
+    .pe-intro { font-size: 19px; color: #333; line-height: 1.75; margin-bottom: 52px; border-left: 3px solid #5BADE0; padding-left: 20px; }
+
+    .pe-decisions { margin: 0 0 52px; }
+    .pe-decision { padding: 24px 0; border-top: 1px solid #ebebeb; }
+    .pe-decision:last-child { border-bottom: 1px solid #ebebeb; }
+    .pe-decision-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .pe-decision-head h3 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; font-weight: 600; color: #111; }
+    .pe-tag { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
+    .tag-decided { background: #5BADE0; color: #fff; }
+    .tag-committed { background: #fff; color: #2a7db5; border: 1.5px solid #5BADE0; }
+    .tag-deciding { background: #f0f0f0; color: #777; }
+    .pe-decision p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 10px; }
+    .pe-decision p:last-child { margin-bottom: 0; }
+
+    .pe-section { margin-bottom: 52px; }
+    .pe-section-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #5BADE0; margin-bottom: 10px; }
+    .pe-section h2 { font-family: Georgia, serif; font-size: 26px; font-weight: normal; color: #111; margin-bottom: 16px; line-height: 1.3; }
+    .pe-section p { font-size: 16px; color: #444; line-height: 1.75; margin-bottom: 14px; }
+    .pe-section p:last-child { margin-bottom: 0; }
+
+    .pe-closer { text-align: center; padding: 48px 0 0; border-top: 1px solid #ebebeb; }
+    .pe-closer p { font-family: Georgia, serif; font-size: 20px; color: #333; line-height: 1.7; max-width: 500px; margin: 0 auto 24px; }
+    .pe-closer a { color: #2a7db5; text-decoration: none; }
+    .pe-closer a:hover { text-decoration: underline; }
+
+    .ps-footer { padding: 24px 32px; border-top: 1px solid #e8e8e8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .ps-footer p, .ps-nonprofit { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #999; }
+    .ps-footer a { color: #999; text-decoration: none; }
+    .ps-footer a:hover { color: #666; }
+
+    @media (max-width: 560px) { .pe-hero h1 { font-size: 32px; } .ps-nav { padding: 14px 20px; } .ps-nav-links { gap: 14px; } }
+  </style>
+</head>
+<body>
+
+<nav class="ps-nav">
+  <a class="ps-logo" href="/">
+    <svg width="36" height="36" viewBox="0 0 64 64" aria-label="porchstroll logo">
+      <rect width="64" height="64" rx="13" fill="#5BADE0"/>
+      <rect x="8" y="6" width="48" height="5" rx="1.5" fill="#fff"/>
+      <polygon points="4,11 60,11 50,22 14,22" fill="#fff"/>
+      <rect x="12" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <rect x="47" y="22" width="5" height="36" rx="2" fill="#fff"/>
+      <circle cx="32" cy="30" r="4" fill="#fff"/>
+      <rect x="30" y="34" width="4" height="8" rx="2" fill="#fff"/>
+      <line x1="30" y1="36" x2="25" y2="32" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="25" y1="32" x2="23" y2="28" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="34" y1="36" x2="38" y2="39" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <rect x="12" y="40" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="16" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="21" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="26" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="31" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="36" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="41" y="42" width="2" height="7" rx="1" fill="#fff"/>
+      <rect x="12" y="49" width="40" height="3" rx="1" fill="#fff"/>
+      <rect x="10" y="52" width="44" height="4" rx="1" fill="#fff"/>
+      <rect x="18" y="55" width="28" height="3" rx="1" fill="#fff"/>
+      <rect x="22" y="57" width="20" height="3" rx="1" fill="#fff"/>
+    </svg>
+    <span class="ps-logo-text">porchstroll</span>
+  </a>
+  <div class="ps-nav-links">
+    <a href="governance.html" class="active">governance</a>
+    <a href="transparency.html">transparency</a>
+    <a href="faq.html">faq</a>
+    <a href="https://porchstroll.com" class="ps-nav-product">the product&nbsp;&rarr;</a>
+  </div>
+</nav>
+
+<div class="pe-hero">
+  <h1>Governance</h1>
+  <p>How decisions get made at porchstroll — and who they answer to.</p>
+</div>
+
+<div class="pe-body">
+
+  <p class="pe-intro">
+    A privacy promise is only as durable as the structure behind it. A founder who changes his mind, or a board that answers to investors, can undo any promise overnight. porchstroll's governance exists for one reason: to make "we don't use you" something the organization can't quietly walk back — even if someone wanted to.
+  </p>
+
+  <div class="pe-decisions">
+    <div class="pe-section-label">How we'll be governed</div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>A majority-independent board</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>Most board seats will be held by people who are neither staff nor the founder. The board's job is to hold leadership accountable to the mission — not the other way around. Board members serve unpaid, so no one is sitting on the board to draw a salary.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>Board size, terms, and how independents are chosen</h3>
+        <span class="pe-tag tag-deciding">Still deciding</span>
+      </div>
+      <p>The exact size of the board, term lengths, and the process for selecting independent members are being worked out with a nonprofit attorney. We'll publish the details — and the people — here once they're settled.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>The Articles of Incorporation, published in full</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>The founding legal document will be posted here so anyone can read exactly what porchstroll is bound to. It's where the organization's purpose and the non-distribution constraint live — the rules a future board can't simply ignore.</p>
+    </div>
+  </div>
+
+  <div class="pe-section">
+    <div class="pe-section-label">Founder accountability</div>
+    <h2>The founder works for the mission, not the other way around.</h2>
+    <p>porchstroll is not the founder's to sell, redirect, or cash out. Because there are no shares and no owners, there is nothing to sell and no one to enrich. If and when the founder is paid, the amount is set by a vote of the board, recorded in the minutes, and reported on the transparency page — not decided privately.</p>
+    <p>This is the part that fails on most platforms. A founder with controlling shares can accept an acquisition, flip on a privacy promise, or change the terms whenever the incentives shift. The structure here is built specifically so that can't happen quietly.</p>
+  </div>
+
+  <div class="pe-section">
+    <div class="pe-section-label">Mission lock</div>
+    <h2>What can change, and what can't.</h2>
+    <p>Plenty will change over time — features, policies, how things look, what we've learned we got wrong. That's normal, and we'll make those changes in the open.</p>
+    <p>What can't change easily is the core: the organization's purpose and the rule that no surplus flows to insiders. Those are written into the founding documents, protected by the board, and visible to anyone who wants to check. That's the difference between a promise and a structure.</p>
+  </div>
+
+  <div class="pe-section">
+    <div class="pe-section-label">If the worst happens</div>
+    <h2>What happens to your data — and our money — if porchstroll has to fold.</h2>
+    <p>Most organizations never tell you this, and it's exactly when it matters most. The moment a platform fails is the moment its users' data is most exposed — because to a creditor or a bankruptcy court, data can look like an asset to be sold off. We're stating now, in advance, that it isn't one.</p>
+  </div>
+
+  <div class="pe-decisions">
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>Your data is deleted, never sold</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>If porchstroll ever winds down, your data is not put up for sale and not handed to whoever might buy what's left. We'll give you clear notice and a window to export everything you've put here — and then we delete it. We're committing to this in the privacy policy itself, in advance, because a promise made before the lights go out is the kind a court will hold us to.</p>
+      <p>The precise mechanism for guaranteeing this through an insolvency is something we're finalizing with legal counsel. We'd rather get that right than make a promise we can't keep.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>Remaining funds go to the mission, not to anyone here</h3>
+        <span class="pe-tag tag-committed">Committed</span>
+      </div>
+      <p>The non-distribution rule holds all the way to the end: no money can go to the founder, staff, or any insider on dissolution. After obligations are settled, whatever remains goes to another nonprofit whose work aligns with ours — privacy, digital rights, or community infrastructure. This will be written into the Articles of Incorporation, not left to anyone's discretion.</p>
+    </div>
+
+    <div class="pe-decision">
+      <div class="pe-decision-head">
+        <h3>Which nonprofit, exactly</h3>
+        <span class="pe-tag tag-deciding">Still deciding</span>
+      </div>
+      <p>Whether to name a specific successor organization or define a process for choosing one at the time is a question for the Articles, and we're working it through with counsel. Either way, it will be a mission-aligned nonprofit, and it will be on the record.</p>
+    </div>
+  </div>
+
+  <div class="pe-closer">
+    <p>The money side of all this lives on the <a href="transparency.html">transparency page</a>. The reasons behind it are in the <a href="letter.html">founder's letter</a>.</p>
+  </div>
+
+</div>
+
+<footer class="ps-footer">
+  <p>&copy; 2026 porchstroll &mdash; a nonprofit community</p>
+  <span class="ps-nonprofit"><a href="letter.html">the founder's letter</a> &middot; no tracking &middot; no profiling &middot; no selling you</span>
+</footer>
+
+</body>
+</html>
