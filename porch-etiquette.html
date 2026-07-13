@@ -21,9 +21,11 @@
     }
     .ps-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .ps-logo-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 500; color: #111; }
-    .ps-nav-links { display: flex; gap: 24px; align-items: center; }
+    .ps-nav-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
     .ps-nav-links a { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #666; text-decoration: none; }
     .ps-nav-links a:hover { color: #111; }
+    .ps-nav-links a.active { color: #111; font-weight: 500; }
+    .ps-nav-product { color: #2a7db5 !important; font-weight: 500; }
 
     /* HERO BAND */
     .pe-hero {
@@ -251,8 +253,12 @@
     <span class="ps-logo-text">porchstroll</span>
   </a>
   <div class="ps-nav-links">
-    <a href="#">about us</a>
-    <a href="#">our mission</a>
+    <a href="governance.html">governance</a>
+    <a href="transparency.html">transparency</a>
+    <a href="faq.html">faq</a>
+    <a href="porch-etiquette.html" class="active">porch etiquette</a>
+    <a href="letter.html">founder's letter</a>
+    <a href="https://porchstroll.com" class="ps-nav-product">the product&nbsp;&rarr;</a>
   </div>
 </nav>
 
